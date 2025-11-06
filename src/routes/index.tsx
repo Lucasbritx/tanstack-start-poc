@@ -7,6 +7,8 @@ import {
   Waves,
   Sparkles,
 } from 'lucide-react'
+import { Link } from "@tanstack/react-router";
+
 
 export const Route = createFileRoute('/')({ component: App })
 
@@ -76,6 +78,7 @@ function App() {
             Build modern applications with server functions, streaming, and type
             safety.
           </p>
+          <Link to="/about">About</Link>
           <div className="flex flex-col items-center gap-4">
             <a
               href="https://tanstack.com/start"
