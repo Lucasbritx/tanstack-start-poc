@@ -78,6 +78,8 @@ function App() {
             Build modern applications with server functions, streaming, and type
             safety.
           </p>
+
+          <Link to="/pokemons">Pokemons</Link>
           <Link to="/about">About</Link>
           <div className="flex flex-col items-center gap-4">
             <a
