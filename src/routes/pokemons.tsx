@@ -18,7 +18,7 @@ function RouteComponent() {
     <div>
       Hello "/pokemons"!
       {data.results.map((pokemon) => {
-        return <div>{pokemon.name}</div>;
+        return <div key={pokemon.name}>{pokemon.name}</div>;
       })}
     </div>
   );
