@@ -4,7 +4,9 @@ export const Route = createFileRoute("/pokemons")({
   component: RouteComponent,
   loader: async () => {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon");
-    return response.json() as Promise<{ results: { name: string }[] }>;
+    return response.json() as Promise<{
+      results: { name: string; url: string }[];
+    }>;
   },
 });
 
@@ -12,5 +14,12 @@ export const Route = createFileRoute("/pokemons")({
 function RouteComponent() {
   const data = Route.useLoaderData();
   console.log("getting data - ", data);
-  return <div>Hello "/pokemons"!</div>;
+  return (
+    <div>
+      Hello "/pokemons"!
+      {data.results.map((pokemon) => {
+        return <div>{pokemon.name}</div>;
+      })}
+    </div>
+  );
 }
