@@ -1,4 +1,3 @@
-// src/serverActions/jokesActions.ts
 import { createServerFn } from '@tanstack/react-start'
 import * as fs from 'node:fs'
 import type { JokesData } from '../types'
