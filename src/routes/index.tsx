@@ -1,12 +1,20 @@
+import { JokesList } from "@/components/JokesList";
+import { getJokes } from "@/serverActions/jokesActions";
 import { pageStore } from "@/stores/pageStore";
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 
-
-export const Route = createFileRoute("/")({ component: App });
+export const Route = createFileRoute("/")({
+  loader: async () => {
+    return getJokes();
+  },
+  component: App,
+});
 
 function App() {
+  const jokes = Route.useLoaderData() || [];
+
   const page = useStore(pageStore);
   return (
     <div className="flex items-start gap-2 p-8 min-h-screen bg-linear-to-b from-slate-900 via-slate-800 to-slate-900">
@@ -28,6 +36,7 @@ function App() {
       >
         About
       </Link>
+      <JokesList jokes={jokes} />
     </div>
   );
 }
